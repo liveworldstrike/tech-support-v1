@@ -38,7 +38,8 @@ public class SupportSystem
 
         while(!finished) {
             String input = reader.getInput();
-            input = input.trim();
+            //trasforma primero todas las letras a mayusculas y despues los espacios.
+            input = input.toLowerCase().trim();
             
             if(input.startsWith("bye")) {
                 finished = true;
