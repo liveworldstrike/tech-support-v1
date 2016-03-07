@@ -43,16 +43,11 @@ public class Responder
      */
     public String generateResponse(String respuestaUsuario)
     {
-        String respuestaUsuario1 = null;
-        if (respuestaUsuario.equals("apruebo")||respuestaUsuario.equals("suspendo")|| respuestaUsuario.equals("nifu")||respuestaUsuario.equals("npi")){
-            
-            respuestaUsuario1 = respuestasPalabras.get(respuestaUsuario);
-        }
-        
-        else{
+        String respuestaUsuario1 = respuestasPalabras.get(respuestaUsuario);
+        if ( respuestaUsuario1 == null) {
             respuestaUsuario1 = respuestas.get(aleatorio.nextInt(respuestas.size()));
         }
         return respuestaUsuario1;
-        
+
     }
 }
