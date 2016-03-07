@@ -1,5 +1,6 @@
 import java.util.Random;
 import java.util.ArrayList;
+import java.util.HashMap;
 /**
  * The responder class represents a response generator object.
  * It is used to generate an automatic response to an input string.
@@ -13,6 +14,8 @@ public class Responder
     private Random aleatorio;
     //atributo que guarda las respuestas 
     private ArrayList<String> respuestas;
+    //atributo que guarda la palabras clave con sus respuestas 
+    HashMap<String ,String > respuestasPalabras;
     /**
      * Construct a Responder - nothing to do
      */
@@ -20,20 +23,36 @@ public class Responder
     {
         aleatorio = new Random();
         respuestas = new ArrayList<String>();
+        respuestasPalabras = new HashMap<>();
 
         respuestas.add("ouuuuuuuu");
         respuestas.add("mas preciso ");
         respuestas.add("y un pepino eso no es posible ");
         respuestas.add("suena aburrido");
         respuestas.add("no te entiendo bro ");
+
+        respuestasPalabras.put("apruebo","siiiiiiiiiiiiiiii");
+        respuestasPalabras.put("suspendo","uooooooooooooooo");
+        respuestasPalabras.put("nifu","buenoooooo");
+        respuestasPalabras.put("npi","ajjajajajajajajjajaja");
     }
 
     /**
      * Generate a response.
      * @return   A string that should be displayed as the response
      */
-    public String generateResponse()
+    public String generateResponse(String respuestaUsuario)
     {
-        return respuestas.get(aleatorio.nextInt(respuestas.size()));
+        String respuestaUsuario1 = null;
+        if (respuestaUsuario.equals("apruebo")||respuestaUsuario.equals("suspendo")|| respuestaUsuario.equals("nifu")||respuestaUsuario.equals("npi")){
+            
+            respuestaUsuario1 = respuestasPalabras.get(respuestaUsuario);
+        }
+        
+        else{
+            respuestaUsuario1 = respuestas.get(aleatorio.nextInt(respuestas.size()));
+        }
+        return respuestaUsuario1;
+        
     }
 }
